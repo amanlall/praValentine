@@ -1,16 +1,29 @@
 // Animation Timeline
 const animationTimeline = () => {
-  // Spit chars that needs to be animated individually
+  // Play background music
+  const audio = document.getElementById("bgMusic");
+
+  // Try to play immediately
+  audio.play().catch(() => {
+    console.log("Autoplay blocked, waiting for user interaction.");
+  });
+
+  // Ensure it plays when the user clicks anywhere
+  document.body.addEventListener("click", () => {
+    audio.play();
+  }, { once: true });
+
+  // Spit chars that need to be animated individually
   const textBoxChars = document.getElementsByClassName("hbd-chatbox")[0];
   const hbd = document.getElementsByClassName("wish-hbd")[0];
 
   textBoxChars.innerHTML = `<span>${textBoxChars.innerHTML
     .split("")
-    .join("</span><span>")}</span`;
+    .join("</span><span>")}</span>`;
 
   hbd.innerHTML = `<span>${hbd.innerHTML
     .split("")
-    .join("</span><span>")}</span`;
+    .join("</span><span>")}</span>`;
 
   const ideaTextTrans = {
     opacity: 0,
@@ -60,7 +73,6 @@ const animationTimeline = () => {
     .from(".three", 0.7, {
       opacity: 0,
       y: 10,
-      // scale: 0.7
     })
     .to(
       ".three",
@@ -205,7 +217,6 @@ const animationTimeline = () => {
       {
         opacity: 0,
         y: -50,
-        // scale: 0.3,
         rotation: 150,
         skewX: "30deg",
         ease: Elastic.easeOut.config(1, 0.5),
@@ -265,17 +276,15 @@ const animationTimeline = () => {
       "+=1"
     );
 
-  // tl.seek("currentStep");
-  // tl.timeScale(2);
-
   // Restart Animation on click
   const replyBtn = document.getElementById("replay");
   replyBtn.addEventListener("click", () => {
     tl.restart();
+    audio.play(); // Restart music when animation restarts
   });
 };
 
-// Import the data to customize and insert them into page
+// Import the data to customize and insert them into the page
 const fetchData = () => {
   fetch("customize.json")
     .then((data) => data.json())
@@ -296,10 +305,10 @@ const fetchData = () => {
 
 // Run fetch and animation in sequence
 const resolveFetch = () => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     fetchData();
     resolve("Fetch done!");
   });
 };
 
-resolveFetch().then(animationTimeline());
+resolveFetch().then(animationTimeline);
