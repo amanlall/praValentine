@@ -20,7 +20,7 @@ body {
   visibility: hidden;
   position: relative;
   overflow: hidden;
-  background-image: url('/img/cat-back.png');
+  background-image: url('/praValentine/img/cat-back.png');
   background-size: 70vw auto;
   background-position: left bottom;
   background-repeat: no-repeat;
@@ -63,7 +63,7 @@ body {
   position: absolute;
   width: 40px; /* Adjust based on GIF size */
   height: 40px;
-  background: url('/img/favorite_15114365.png') no-repeat center;
+  background: url('/praValentine/img/favorite_15114365.png') no-repeat center;
   background-size: contain;
   animation: floatParticles linear infinite;
   opacity: 0.8;
