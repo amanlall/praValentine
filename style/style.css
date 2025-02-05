@@ -4,7 +4,12 @@ html {
 
 body {
   margin: 0;
-  font-family: "Work Sans", sans-serif;
+  font-family: "Lato", "Poppins", "Montserrat", "Arial", sans-serif;
+  font-weight: bold;
+  background: linear-gradient(45deg, #FFC5C5, #e0e0e0);
+  color: #444;
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
 .container {
@@ -15,18 +20,129 @@ body {
   visibility: hidden;
   position: relative;
   overflow: hidden;
-  background-image: url('/img/heart.svg');
-  background-size: cover;
-  background-position: center;
+  background-image: url('/img/cat-back.png');
+  background-size: 70vw auto;
+  background-position: left bottom;
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  opacity: 1; /* Fade the background image by 20% */
+  animation: move 10s infinite;
 }
+
+@keyframes move {
+  0% {
+    background-position: left bottom;
+  }
+  50% {
+    background-position: right bottom;
+  }
+  100% {
+    background-position: left bottom;
+  }
+}
+
+
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+  background-size: 400% 400%;
+  animation: gradientAnimation 10s infinite alternate ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Animated Gradient Flow */
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.particle {
+  position: absolute;
+  width: 40px; /* Adjust based on GIF size */
+  height: 40px;
+  background: url('/img/favorite_15114365.png') no-repeat center;
+  background-size: contain;
+  animation: floatParticles linear infinite;
+  opacity: 0.8;
+}
+
+/* Floating Animation */
+@keyframes floatParticles {
+  from {
+    transform: translateY(100vh) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-10vh) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Different speeds and positions for randomness */
+.particle:nth-child(1) { left: 10%; animation-duration: 8s; animation-delay: 1s; }
+.particle:nth-child(2) { left: 30%; animation-duration: 10s; animation-delay: 3s; }
+.particle:nth-child(3) { left: 50%; animation-duration: 6s; animation-delay: 2s; }
+.particle:nth-child(4) { left: 70%; animation-duration: 12s; animation-delay: 4s; }
+.particle:nth-child(5) { left: 90%; animation-duration: 7s; animation-delay: 1s; }
 
 .container div.six {
   top: 10vh;
   z-index: 1;
 }
+
+/* Gradient Text + Glow Effect */
+#name {
+  font-weight: bold;
+  font-size: 1.2em;
+  background: linear-gradient(90deg, #ff4d6d, #ff7eb3, #ff4d6d);
+  -webkit-background-clip: text;
+  color: transparent;
+  position: relative;
+  display: inline-block;
+  animation: heartbeat 1.5s infinite alternate, shimmer 2s infinite linear;
+  /* text-shadow: 0 0 10px rgba(255, 77, 109, 0.5), 0 0 20px rgba(255, 77, 109, 0.3); */
+}
+
+/* Shimmer Animation (Text Glow Effect) */
+@keyframes shimmer {
+  0% { opacity: 0.8; text-shadow: 0 0 10px rgba(255, 77, 109, 0.5), 0 0 20px rgba(255, 77, 109, 0.3); }
+  50% { opacity: 1; text-shadow: 0 0 15px rgba(255, 77, 109, 0.8), 0 0 30px rgba(255, 77, 109, 0.6); }
+  100% { opacity: 0.8; text-shadow: 0 0 10px rgba(255, 77, 109, 0.5), 0 0 20px rgba(255, 77, 109, 0.3); }
+}
+
+/* Heartbeat Effect */
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.2); }
+}
+
+/* Sparkle Animation */
+#name::before, #name::after {
+  content: "";
+  position: absolute;
+  font-size: 1.2em;
+  animation: sparkle 1.5s infinite alternate;
+}
+
+#name::before {
+  left: -20px;
+  top: -10px;
+}
+
+#name::after {
+  right: -20px;
+  bottom: -10px;
+}
+
+/* Sparkle Movement */
+@keyframes sparkle {
+  0% { opacity: 0.5; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.2); }
+}
+
 
 .container div.seven,
 .container div.eight {
@@ -123,9 +239,35 @@ body {
 }
 
 .six img {
-  display: inline-block;
-  max-width: 45%;
+  display: block;
+  max-width: 100%;
   height: auto;
+  object-fit: top;
+  mix-blend-mode: multiply;
+  animation: blurAndScale 4s ease-in-out  alternate;
+}
+
+@keyframes blurAndScale {
+  0% {
+    filter: blur(0px);
+    transform: scale(1);
+  }
+  25% {
+    filter: blur(4px);
+    transform: scale(0.9);
+  }
+  50% {
+    filter: blur(2px);
+    transform: scale(1.1);
+  }
+  75% {
+    filter: blur(6px);
+    transform: scale(0.8);
+  }
+  100% {
+    filter: blur(0px);
+    transform: scale(1.2);
+  }
 }
 
 .six .hat {
@@ -218,9 +360,12 @@ body {
 }
 
 .wish-hbd {
-  font-size: 3em;
+  font-size: 2.5em;
   margin: 0;
-  /* text-transform: uppercase; */
+  font-weight: bold;
+  text-align: center;
+  color: #ff4d6d;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .wish h5 {
@@ -303,4 +448,18 @@ body {
     font-size: 1.5rem;
     font-weight: lighter;
   }
+
+  
+  .music-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #ff4d6d;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }

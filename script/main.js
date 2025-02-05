@@ -4,10 +4,22 @@ const animationTimeline = () => {
   const audio = document.getElementById("bgMusic");
 
   // Try to play immediately
-  audio.play().catch(() => {
-    console.log("Autoplay blocked, waiting for user interaction.");
-  });
+  // audio.play().catch(() => {
+  //   console.log("Autoplay blocked, waiting for user interaction.");
+  // });
 
+  var music = document.getElementById("bgMusic");
+  var playPauseBtn = document.getElementById("playPause");
+  function playPauseMusic() {
+    if (music.paused) {
+      music.play();
+      playPauseBtn.innerHTML = "<span id='playPauseText'>Click to pause</span>";
+    } else {
+      music.pause();
+      playPauseBtn.innerHTML = "<span id='playPauseText'>Click to play</span>";
+    }
+    
+  }
   // Ensure it plays when the user clicks anywhere
   document.body.addEventListener("click", () => {
     audio.play();
@@ -283,6 +295,7 @@ const animationTimeline = () => {
     audio.play(); // Restart music when animation restarts
   });
 };
+
 
 // Import the data to customize and insert them into the page
 const fetchData = () => {

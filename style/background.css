@@ -1,0 +1,69 @@
+body {
+    background-color: #ff4d6d; /* Base color */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .heart-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .heart {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: #ffb3c6; /* Light pink */
+    clip-path: path("M50 15c13-15 35-15 48-0 13 15 13 35 0 48L50 85 15 63C2 48 2 28 15 15 28-0 37 0 50 15z");
+    animation: pulse 3s infinite ease-in-out;
+    transform-origin: center;
+  }
+  
+  .heart:nth-child(2) {
+    background-color: #ff6680;
+    animation-delay: 0.5s;
+  }
+  
+  .heart:nth-child(3) {
+    background-color: #ff3366;
+    animation-delay: 1s;
+  }
+  
+  .heart:nth-child(4) {
+    background-color: #ff1a4d;
+    animation-delay: 1.5s;
+  }
+  
+  .heart:nth-child(5) {
+    background-color: #e60033;
+    animation-delay: 2s;
+  }
+  
+  /* Expanding and fading effect */
+  @keyframes pulse {
+    0% {
+      transform: scale(0);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.5);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+  
